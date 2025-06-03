@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP4 Video Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for better centering and responsiveness */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        .video-wrapper {
+            /* Removed padding-bottom to let the video determine its own height based on its aspect ratio */
+            width: 100%;
+            max-width: 100%; /* Ensures the wrapper doesn't overflow its parent */
+            border-radius: 0.5rem; /* Rounded corners for the container */
+            overflow: hidden; /* Ensures the video respects the container's rounded corners */
+        }
+        .video-wrapper video {
+            display: block; /* Removes any extra space below the video element */
+            width: 100%; /* Makes the video responsive to its container's width */
+            height: auto; /* Crucial: Maintains the video's original aspect ratio */
+            /* object-fit is not strictly necessary here because height: auto already preserves aspect ratio,
+               but it can be useful if the video element itself had a fixed height and needed to fit content. */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-3xl mx-auto bg-gray-800 rounded-lg shadow-xl p-6">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-100">MP4 Video Player</h1>
+
+        <div class="video-wrapper">
+            <!--
+                Using the HTML5 <video> tag to play the MP4 file directly.
+                The 'src' attribute points to the raw content URL of the GitHub file.
+                'controls' attribute adds default video controls (play/pause, volume, fullscreen).
+                'autoplay' attribute attempts to play the video automatically (may be blocked by browsers).
+                'loop' attribute makes the video repeat automatically.
+                'muted' attribute is often required for 'autoplay' to work in modern browsers.
+                'playsinline' attribute is important for mobile devices to play video inline rather than fullscreen.
+                The 'class="w-full h-auto"' ensures the video scales responsively while preserving its aspect ratio.
+            -->
+            <video
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+                class="w-full h-auto"
+            >
+                <source src="https://raw.githubusercontent.com/MSR502/RRR/main/50603-121138.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <p class="text-center text-gray-400 mt-6">
+            This video is hosted on GitHub.
+        </p>
+    </div>
+</body>
+</html>
